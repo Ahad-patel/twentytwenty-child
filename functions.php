@@ -9,7 +9,7 @@
 
 add_action('init','my_new_custom_post');
 function my_new_custom_post() {
-	$labels = array(
+	$labels1 = array(
 		'name'			     =>	'Shipment',
 		'singular_name'      => 'Shipment',
 		'add_new' 		     => 'Add new',
@@ -24,9 +24,9 @@ function my_new_custom_post() {
 		'attributes'		 => 'Shipment Attributes',
 	);
 
-	$args = array(
+	$args1 = array(
 
-		'labels' => $labels,
+		'labels' => $labels1,
 		'description' => 'This is my new custom post on shipment',
 		'public' => true,
 		'menu_postion' => 5,
@@ -37,9 +37,44 @@ function my_new_custom_post() {
 		'query_var' => true,
 
 	);
-	register_post_type('article',$args);
-}
 
- ?>
+	 register_post_type('article',$args1); } 
+	 ?>
 
-  
+	  <?php
+
+	add_action ('init','my_second_post_type');
+
+	function my_second_post_type () {
+
+		$labels = array(
+			'name'			     =>	'Report',
+			'singular_name'      => 'Report',
+			'add_new' 		     => 'Add New',
+			'add_new_item'	     => 'Add New Report',
+			'edit_item'		     => 'edit Report',
+			'new_item' 		     => 'New Report',
+			'view_item' 	     => 'view Report',
+			'view_items' 	     => 'View Reports',
+			'not_found' 	     => 'No Reports found',
+			'not_found_in_trash' => 'Not found in trash',
+			'all_items'			 => 'All Reports',
+			'attributes'		 => 'Report Attributes',
+
+		);
+		$args = array(
+
+			'labels' => $labels,
+			'description' => 'This is my new custom post on report',
+			'public' => true,
+			'menu_postion' => 2,
+			'supports' => array('custom-feilds','post-formats'),
+			'has_archive' => true,
+			'show_in_admin_bar' => true,
+			'show_in_nav_menus' => true,
+			'query_var' => true,
+
+		);
+		register_post_type('report',$args);
+	}
+	 ?>
